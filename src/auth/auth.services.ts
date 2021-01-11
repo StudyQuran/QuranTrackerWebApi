@@ -7,10 +7,10 @@ import Config from '../config'
 
 export default {
   VeryifyEmial: {
-    CreateUserHash: (userName: string) => {
+    CreateUserHash: (userId: number) => {
       return new Promise<string>((resolve, reject) => {
         const RandomString = Crypto.randomBytes(16).toString('hex')
-        Redis.SET(userName, RandomString!, 'EX', 24 * 60 * 60, (err, reply) => {
+        Redis.SET(userId.toString(), RandomString!, 'EX', 24 * 60 * 60, (err, reply) => {
           if (err) {
             console.log(err.message)
             reject(new createHttpError.InternalServerError())
@@ -20,16 +20,16 @@ export default {
         })
       })
     },
-    CheckUserHash: (userName: string, randomString: string) => {
+    CheckUserHash: (userId: number, randomString: string) => {
       return new Promise<boolean>((resolve, reject) => {
-        Redis.GET(userName, (err, result) => {
+        Redis.GET(userId.toString(), (err, result) => {
           if (err) {
             console.log(err.message)
             reject(new createHttpError.InternalServerError())
             return
           }
           if (randomString === result) {
-            Redis.DEL(userName, (err, val) => {
+            Redis.DEL(userId.toString(), (err, val) => {
               if (err) {
                 console.log(err.message)
                 throw new createHttpError.InternalServerError()
@@ -44,10 +44,10 @@ export default {
     }
   },
   ChangePassword: {
-    CreateUserHash: (userName: string) => {
+    CreateUserHash: (userId: number) => {
       return new Promise<string>((resolve, reject) => {
         const RandomString = Crypto.randomBytes(16).toString('hex')
-        Redis.SET(userName, RandomString!, 'EX', 10 * 60, (err, reply) => {
+        Redis.SET(userId.toString(), RandomString!, 'EX', 10 * 60, (err, reply) => {
           if (err) {
             console.log(err.message)
             reject(new createHttpError.InternalServerError())
@@ -57,16 +57,16 @@ export default {
         })
       })
     },
-    CheckUserHash: (userName: string, randomString: string) => {
+    CheckUserHash: (userId: number, randomString: string) => {
       return new Promise<boolean>((resolve, reject) => {
-        Redis.GET(userName, async (err, result) => {
+        Redis.GET(userId.toString(), async (err, result) => {
           if (err) {
             console.log(err.message)
             reject(new createHttpError.InternalServerError())
             return
           }
           if (randomString === result) {
-            Redis.DEL(userName, (err, val) => {
+            Redis.DEL(userId.toString(), (err, val) => {
               if (err) {
                 console.log(err.message)
                 throw new createHttpError.InternalServerError()

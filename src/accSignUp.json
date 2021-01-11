@@ -1,0 +1,16 @@
+{
+	"accType": "teacher|parent|student",
+	"schoolId": "schoolId",
+	"accounts": [
+		{
+			"fistName": "daha",
+			"lastName": "shahrod",
+			"email": "email@gmail.com"
+		},
+		{
+			"fistName": "daha1",
+			"lastName": "shahrod1",
+			"email": "email1@gmail.com"
+		}
+	]
+}
