@@ -1,7 +1,7 @@
 import express from 'express'
-import AuthService from '../auth/auth.services'
+import AuthService from '../controllers/auth/auth.services'
 import Config from '../config/enviormentVariables'
-import Settings from '../settings.json'
+import Settings from '../Json/settings.json'
 
 export const HomeRoutes = express.Router()
 
@@ -12,7 +12,7 @@ HomeRoutes.get('/', async (req, res, next) => {
     port: Config.server.PORT
   })
 })
-HomeRoutes.get('/auth', AuthService.JWT.verifyAccessToken, async (req, res, next) => {
+HomeRoutes.get('/auth', AuthService.JWT.verifyAccessTokenMiddleware, async (req, res, next) => {
   res.json({
     name: Settings.ProjectName,
     secrect: 'Secret',

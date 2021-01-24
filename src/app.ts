@@ -6,6 +6,7 @@ import swaggerUi from 'swagger-ui-express'
 import Config from './config/index'
 import Routes from './routes'
 import Init from './config/Init'
+import SwaggerJson from './Json/swagger-sepc.json'
 import 'reflect-metadata'
 
 const startServer = () => {
@@ -14,7 +15,8 @@ const startServer = () => {
   app.use(cors())
   app.use(cookieParser())
   app.use(morgan('dev'))
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(Init.swaggerDocs))
+  Init
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(SwaggerJson))
   app.use('/', Routes.HomeRoutes)
   app.use('/auth', Routes.AuthRoutes)
   app.use('/testdata', Routes.TestDataRoutes)

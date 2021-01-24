@@ -1,0 +1,22 @@
+{
+  "classes": ["First Period - Memorization", "Second Period - Revision"],
+  "schoolId": "123",
+  "teacherAccounts": [
+    {
+      "fistName": "daha",
+      "lastName": "shahrod",
+      "email": "email@gmail.com",
+      "classes": ["First Period - Memorization"]
+    }
+  ],
+  "parentStudentAccounts": [
+    {
+      "fistName": "daha",
+      "lastName": "shahrod",
+      "parentFistName": "daha",
+      "parentLastName": "shahrod",
+      "email": "email@gmail.com",
+      "classes": ["First Period - Memorization"]
+    }
+  ]
+}

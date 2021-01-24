@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 import { oAuth2Client } from '../../config/Init/initGmail'
 import Config from '../../config'
 
-export async function VerifyEMail({ email, randomString,firstName, userId }: AccountInfo) {
+export async function VerifyEMail({ email, randomString, firstName, userId }: AccountInfo) {
   try {
     const accessToken = await oAuth2Client.getAccessToken()
     const token = accessToken.token as string
@@ -28,7 +28,7 @@ export async function VerifyEMail({ email, randomString,firstName, userId }: Acc
       html: `<body>
       <div>
       <div>
-      Dear ${firstName}, </div>
+      Assalamualaikum ${firstName}, </div>
       <div>
       Please verify your email address
       </div>

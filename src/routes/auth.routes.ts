@@ -1,5 +1,5 @@
 import express from 'express'
-import AuthController from '../controllers/auth.controller'
+import AuthController from '../controllers/auth/auth.controller'
 
 export const AuthRoutes = express.Router()
 
@@ -100,7 +100,7 @@ AuthRoutes.patch('/changepassword', AuthController.changePassword)
 AuthRoutes.post('/login', AuthController.login)
 /**
  * @swagger
- * /auth/refresh-token:
+ * /auth/onclientload:
  *  post:
  *    description: Check refresh-token and create new tokens in accsess token is expired
  *    produces:
@@ -109,7 +109,7 @@ AuthRoutes.post('/login', AuthController.login)
  *      '200':
  *        description: Refresh-token is valid and successfully created new tokens
  */
-AuthRoutes.post('/refresh-token', AuthController.refreshToken)
+AuthRoutes.post('/onclientload', AuthController.onClientLoad)
 /**
  * @swagger
  * /auth/logout:

@@ -6,6 +6,7 @@ export async function sendMail(email: string) {
   try {
     const accessToken = await oAuth2Client.getAccessToken()
     const token = accessToken.token as string
+    console.log(token)
     const transport = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,

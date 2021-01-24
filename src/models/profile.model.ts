@@ -4,34 +4,37 @@ import { School } from './school.model'
 import { User } from './user.model'
 
 enum accType {
-	'superAdmin',
-	'admin',
-	'teacher',
-	'parent',
-	'student',
+  'superAdmin',
+  'admin',
+  'teacher',
+  'parent',
+  'student'
 }
 
 @Entity()
 export class Profile {
-	@PrimaryGeneratedColumn()
-	id: number
+  @PrimaryGeneratedColumn()
+  id: number
 
-	@Column()
-	firstName: string
+  @Column()
+  firstName: string
 
-	@Column()
-	lastName: string
+  @Column()
+  lastName: string
 
-	@OneToOne(() => School, (school) => school.profile)
-	@JoinColumn()
-	school: School
+  @Column()
+  email: string
 
-	@OneToMany(() => Enrolment, (enrolment) => enrolment.profile)
-	enrolment: Enrolment[]
+  @OneToOne(() => School, (school) => school.profile)
+  @JoinColumn()
+  school: School
 
-	@Column({ type: 'enum', enum: accType })
-	accType: accType
+  @OneToMany(() => Enrolment, (enrolment) => enrolment.profile)
+  enrolment: Enrolment[]
 
-	@OneToOne(() => User, (user) => user.profile)
-	user: User
+  @Column({ type: 'enum', enum: accType })
+  accType: accType
+
+  @OneToOne(() => User, (user) => user.profile)
+  user: User
 }
