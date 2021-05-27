@@ -1,9 +1,7 @@
-import { AuthRoutes } from './auth.routes'
 import { HomeRoutes } from './home.routes'
-import { TestDataRoutes } from './testData.routes'
+import { TestRoutes } from './test.routes'
 
 export default {
-  HomeRoutes,
-  AuthRoutes,
-  TestDataRoutes
+    HomeRoutes,
+    TestRoutes
 }

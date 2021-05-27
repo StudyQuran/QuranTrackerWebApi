@@ -1,67 +1,49 @@
 import Joi from 'joi'
-
-const AdminApplySchema = Joi.object({
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
-  email: Joi.string().email().lowercase().required()
-})
-const AdminSingUpSchema = Joi.object({
-  schoolName: Joi.string(),
-  schoolLocation: Joi.string(),
-  schoolType: Joi.string(),
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
-  email: Joi.string().email().lowercase().required(),
-  password: Joi.string()
+const PasswordSchema = Joi.string()
     .min(2)
     .regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
-    .required(),
-  accType: Joi.string().valid('admin').required()
+    .required()
+
+const AdminSingUpSchema = Joi.object({
+    schoolName: Joi.string(),
+    schoolCity: Joi.string(),
+    schoolState: Joi.string(),
+    schoolType: Joi.string().valid('islamic', 'masjid', 'online', 'other'),
+    firstName: Joi.string().lowercase().required(),
+    lastName: Joi.string().lowercase().required(),
+    email: Joi.string().email().lowercase().required(),
+    password: PasswordSchema,
+    accType: Joi.string().valid('admin').required()
 })
 
 const SingUpSchema = Joi.object({
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
-  email: Joi.string().email().lowercase().required(),
-  password: Joi.string()
-    .min(2)
-    .regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
-    .required(),
-  schoolId: Joi.number(),
-  accType: Joi.string().valid('admin', 'teacher', 'parent', 'student').required(),
-  parentId: Joi.string()
+    firstName: Joi.string().lowercase().required(),
+    lastName: Joi.string().lowercase().required(),
+    email: Joi.string().email().lowercase().required(),
+    password: PasswordSchema,
+    schoolId: Joi.number(),
+    accType: Joi.string().valid('admin', 'teacher', 'parent', 'student').required(),
+    parentId: Joi.string()
 })
 
 const LoginSchema = Joi.object({
-  userName: Joi.string().required(),
-  password: Joi.string()
-    .min(2)
-    .regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
-    .required()
+    userName: Joi.string().lowercase().required(),
+    password: PasswordSchema
 })
 const VerifyEmailSchema = Joi.object({
-  userName: Joi.string().required(),
-  randomString: Joi.string().required()
+    userName: Joi.string().lowercase().required(),
+    randomString: Joi.string().required()
 })
 const ChangePasswordSchema = Joi.object({
-  userName: Joi.string().required(),
-  randomString: Joi.string().required(),
-  password: Joi.string()
-    .min(2)
-    .regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
-    .required()
+    userName: Joi.string().lowercase().required(),
+    randomString: Joi.string().required(),
+    password: PasswordSchema
 })
 
-const PasswordSchema = Joi.string()
-  .min(2)
-  .regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
-  .required()
-
 export default {
-  AdminSingUpSchema,
-  AdminApplySchema,
-  SingUpSchema,
-  VerifyEmailSchema,
-  ChangePasswordSchema,
-  LoginSchema
+    AdminSingUpSchema,
+    SingUpSchema,
+    VerifyEmailSchema,
+    ChangePasswordSchema,
+    LoginSchema
 }

@@ -1,0 +1,35 @@
+{
+    "admins": [
+        {
+            "firstName": "",
+            "lastName": "",
+            "email": ""
+        }
+    ],
+    "teachers": [
+        {
+            "firstName": "",
+            "lastName": "",
+            "email": ""
+        }
+    ],
+    "parents": [
+        {
+            "firstName": "",
+            "lastName": "",
+            "email": ""
+        }
+    ],
+    "students": [
+        {
+            "firstName": "",
+            "lastName": ""
+        }
+    ],
+    "classes": [
+        {
+            "name": "",
+            "teacherEmail": ""
+        }
+    ]
+}

@@ -4,8 +4,8 @@ import { VerifyEMail } from './verifyEmail'
 import { ApplyEmail } from './applyEmail'
 
 export default {
-  sendMail,
-  VerifyEMail,
-  ChangePassword,
-  ApplyEmail
+    sendMail,
+    VerifyEMail,
+    ChangePassword,
+    ApplyEmail
 }

@@ -1,7 +1,4 @@
-import { swaggerDocs } from './initSwagger'
-import './initTypeORM'
-import './initRedis'
+import TypeORMConnection from './initTypeORM'
+import RedisClient from './initRedis'
 
-export default {
-  swaggerDocs
-}
+export default { TypeORMConnection, RedisClient }
